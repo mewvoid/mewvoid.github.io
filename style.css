@@ -234,3 +234,29 @@ footer {
 .card-link:active {
   color: inherit;
 }
+
+.gif-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.gif-icon {
+  width: 100px;
+  height: auto;
+  transition: transform 0.2s ease;
+}
+
+.gif-icon:hover {
+  transform: scale(1.1);
+}
+
+.logo-link {
+  text-decoration: none;
+}
+.logo-link:visited,
+.logo-link:active {
+  color: inherit;
+}
