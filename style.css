@@ -187,11 +187,14 @@ main {
 }
 
 .card-label {
-  max-width: 120px;
+  max-width: 90%;
+  max-height: 90px;
   height: auto;
   margin: 0 auto .75rem auto;
   display: block;
+  object-fit: contain;
 }
+
 
 footer {
   background: #111;
