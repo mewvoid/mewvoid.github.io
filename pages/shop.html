@@ -1,39 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop • MewVoid</title>
     <link href="https://fonts.googleapis.com/css2?family=Doto&family=Orbitron&family=Syne+Mono&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* simple layout fixes so the item centers and links are styled */
+        #merch {
+            display: flex;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .product-card {
+            text-align: center;
+            text-decoration: none;
+            font-family: "Syne Mono", monospace;
+        }
+        .product-card img {
+            max-width: 320px;
+            border: 2px solid #ffffff;
+            border-radius: 8px;
+        }
+        .product-title {
+            margin: 1rem 0 0.25rem;
+            font-size: 1.5rem;
+            color: #ffffff;
+        }
+        .product-price {
+            margin: 0 0 0.75rem;
+            font-size: 1rem;
+            color: #ffd000;
+        }
+        .buy-btn {
+            padding: 0.5rem 1.5rem;
+            background: #ffd000;
+            border: none;
+            font-family: inherit;
+            cursor: pointer;
+        }
+    </style>
 </head>
-
 <body class="scanlines">
     <div class="grid-bg"></div>
-    <header>
-        <a href="../index.html" class="logo-link">
-            <h1>MEWVOID</h1>
-        </a>
+    <header class="banner">
+        <h1 class="wordmark">MEWVOID</h1>
     </header>
 
     <main>
-        <div class="content-page" id="shop">
-            <h2>Shop</h2>
-
-            <!-- Product card -->
-            <a href="https://mewvoid.printful.me/products/mewvoid-tshirt" target="_blank" rel="noopener noreferrer" class="product-card">
-                <img src="/assets/pics/mewvoidshirt.gif" alt="MewVoid T‑Shirt" width="320">
-                <h3>MewVoid T‑Shirt</h3>
-                <p class="price">From $29.00</p>
+        <section id="merch">
+            <a class="product-card" href="https://mewvoid.printful.me/products/mewvoid-tshirt" target="_blank" rel="noopener noreferrer">
+                <img src="../assets/pics/mewvoidshirt.gif" alt="MewVoid T Shirt">
+                <h2 class="product-title">MewVoid T Shirt</h2>
+                <p class="product-price">From $29.00</p>
                 <button class="buy-btn">Buy now</button>
             </a>
-        </div>
+        </section>
     </main>
-
-    <footer>
-        <p>© 2025 MEWVOID. All rights reversed.</p>
-    </footer>
 </body>
-
 </html>
