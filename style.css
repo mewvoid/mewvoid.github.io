@@ -231,3 +231,55 @@ header .brand:active .sigil{
     0 0 14px rgba(255,51,77,.35),
     0 0 24px rgba(255,51,77,.22);
 }
+/* ==== SOUND page: fluid, proportional scaling ==== */
+
+/* Container breathes with viewport */
+.wrapper{
+  max-width: min(1200px, 94vw);
+  margin: 0 auto;
+  padding-inline: clamp(.75rem, 2.4vw, 1.25rem);
+}
+
+/* Auto-fit tiles, scale gaps with screen */
+.page-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(150px, 42vw, 220px), 1fr));
+  gap: clamp(.6rem, 2.6vw, 1rem);
+}
+
+/* Tile layout + subtle padding */
+.figure{
+  display:grid;
+  align-content:start;
+  justify-items:center;
+  gap: clamp(.15rem, 1.4vw, .35rem);
+  padding: clamp(.5rem, 1.6vw, .8rem);
+  border-radius: 10px;
+}
+
+/* Icon sizes scale smoothly */
+.figure img{
+  width: clamp(60px, 22vw, 110px);
+  height: auto;
+}
+
+/* Caption scales with viewport */
+.figure figcaption{
+  font-size: clamp(12px, 1.6vw, 14px);
+  line-height: 1.15;
+}
+
+/* Small phones: slightly larger tiles, wider tap targets */
+@media (max-width: 640px){
+  .page-grid{
+    grid-template-columns: repeat(auto-fit, minmax(46vw, 1fr));
+    gap: clamp(.7rem, 3vw, 1rem);
+  }
+  .figure img{ width: clamp(74px, 28vw, 120px); }
+}
+
+/* Large desktops: let tiles breathe a bit more */
+@media (min-width: 1400px){
+  .page-grid{ gap: 1.1rem; }
+  .figure img{ width: clamp(80px, 12vw, 130px); }
+}
