@@ -192,6 +192,55 @@
 	  filter: blur(14px);
 	}
 	/* === end copy === */
+	/* === Fluid responsive tune-up — index only === */
+
+	/* Make containers breathe fluidly on any screen */
+	.header-inner{
+	  max-width: min(1200px, 96vw);
+	  padding: clamp(.5rem, 1.8vw, .9rem) clamp(.6rem, 2.2vw, 1rem);
+	  gap: clamp(.4rem, 2vw, 1rem);
+	  flex-wrap: wrap; /* allows nav to wrap on smaller screens */
+	}
+	main{
+	  max-width: min(1200px, 94vw);
+	  margin: 0 auto;
+	  padding-inline: clamp(.75rem, 2.4vw, 1.25rem);
+	}
+
+	/* Keep images perfectly proportional */
+	img, svg, video{max-width:100%; height:auto}
+
+	/* Header logo: KEEP your existing height rule.
+	   This only ensures it scales smoothly with its container. */
+	.brand img.brand-logo{inline-size:auto; block-size:auto}
+
+	/* Nav links: fluid font + touch-friendly padding */
+	header nav a{
+	  font-size: clamp(.9rem, .6vw + .62rem, 1.05rem);
+	  padding: clamp(.35rem, .8vw, .55rem) clamp(.6rem, 1.6vw, .9rem);
+	  border-radius: 10px; /* keeps your glow nicely rounded */
+	}
+
+	/* Hero + headline bits scale nicely */
+	#chrome{width:min(88%, 1000px)}
+	.neon{
+	  font-size: clamp(14px, 2.4vw, 24px);
+	  letter-spacing: clamp(.04em, .06vw, .08em);
+	}
+	.caption{font-size: clamp(11px, 1.4vw, 12px)}
+
+	/* Tighten vertical rhythm on small screens */
+	@media (max-width: 720px){
+	  .header-inner{justify-content:center}
+	  header nav{width:100%; display:flex; justify-content:center; gap: clamp(.4rem, 3vw, .75rem)}
+	  .neon{bottom: 20%}
+	}
+
+	/* Ultra-small phones */
+	@media (max-width: 400px){
+	  header nav a{padding: .4rem .6rem}
+	}
+
 
 	
 </style>
