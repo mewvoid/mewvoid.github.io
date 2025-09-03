@@ -1,77 +1,271 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MEWVOID</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>m e w V o i d</title>
+  <meta name="description" content="MEWVOID — cybersigil pop" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@700;900&family=Syne+Mono&family=VT323&display=swap" rel="stylesheet">
+  <style>
+    /* ======= tokens ======= */
+    :root{
+      --bg0:#040404; --bg1:#0a0a0a; --bg2:#121212;
+      --fg:#e9e9e9; --fg-dim:#bcbcbc;
+      --acc:#ff7a00; --neon:#d6ff00; --alt:#36ff9b;
+      --ring:0 0 0 .2rem rgba(255,122,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--fg); font-family:"Doto",system-ui,Segoe UI,Roboto,Arial,sans-serif;
+      background:
+        radial-gradient(1100px 700px at 50% -10%, #1b0c00 0%, transparent 55%),
+        linear-gradient(180deg,var(--bg0),var(--bg1) 42%, var(--bg2));
+      overflow-x:hidden; display:flex; flex-direction:column;
+    }
+    a{color:inherit; text-decoration:none}
+    a:focus-visible, button:focus-visible{outline:none; box-shadow:var(--ring); border-radius:10px}
 
-  <!-- Fonts: Doto (logo), Syne Mono (cards), Orbitron (body) -->
-  <link href="https://fonts.googleapis.com/css2?family=Doto&family=Orbitron&family=Syne+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+    /* film grain + scanlines */
+    body::before{content:""; position:fixed; inset:0; z-index:1; pointer-events:none; opacity:.55;
+      background:
+        repeating-linear-gradient(to bottom, rgba(255,255,255,.02), rgba(255,255,255,.02) 2px, transparent 3px),
+        radial-gradient(800px 320px at 10% 0%, rgba(255,36,74,.08), transparent 60%),
+        radial-gradient(600px 260px at 90% 20%, rgba(54,255,155,.08), transparent 60%);
+      mix-blend-mode:overlay;
+    }
+
+    /* ======= header ======= */
+    header{position:sticky; top:0; z-index:10; background:rgba(0,0,0,.72); backdrop-filter:blur(6px); border-bottom:1px solid #242424}
+    .header-inner{display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.9rem 1rem; max-width:1200px; margin:0 auto}
+    .brand{display:flex; align-items:center; gap:.65rem; letter-spacing:.22em; text-transform:uppercase}
+    .brand h1{margin:0; font-size:clamp(1.35rem,4.3vw,2.2rem); color:var(--acc); text-shadow:0 0 18px rgba(255,122,0,.25)}
+    .sigil-dot{width:1.05rem; height:1.05rem; border:1px solid var(--acc); rotate:45deg; box-shadow:0 0 12px rgba(255,122,0,.35), inset 0 0 8px rgba(255,122,0,.25)}
+    nav a{font-family:"Syne Mono",monospace; font-size:.95rem; opacity:.9; padding:.45rem .65rem; border:1px solid transparent; border-radius:10px}
+    nav a:hover{border-color:#2d2d2d; background:#0c0c0c}
+
+    /* ======= hero ======= */
+    .hero{position:relative; isolation:isolate; margin:0 auto; width:min(1200px,94vw); aspect-ratio:16/9; border-radius:24px; overflow:hidden; box-shadow:0 10px 26px rgba(0,0,0,.45)}
+    .hero::before{content:""; position:absolute; inset:0; background:center/cover no-repeat; filter:contrast(1.02) saturate(1.05) brightness(.95);
+      background-image: var(--hero, url('assets/pics/mountain.jpg')); opacity:.9}
+    .veil{position:absolute; inset:0; backdrop-filter: blur(2px) saturate(1.05)}
+
+    /* chrome‑ish SVG logo */
+    #chrome{position:absolute; width:min(88%,1000px); left:50%; transform:translateX(-50%); top:5%}
+    @media (max-width:640px){#chrome{top:8%}}
+    .neon{position:absolute; left:0; right:0; bottom:22%; text-align:center; color:var(--neon); font-weight:900; letter-spacing:.08em; font-size:clamp(14px,2.4vw,24px);
+      mix-blend-mode:screen; filter: drop-shadow(0 0 8px var(--neon))}
+    .caption{position:absolute; right:1rem; bottom:1rem; font: 12px "Syne Mono",monospace; color:#9e9e9e}
+
+    /* cards */
+    .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:clamp(1rem,2.4vw,1.35rem); max-width:1200px; margin:1.25rem auto 2.25rem; padding:0 1rem}
+    .card{position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; aspect-ratio:1/1; border:1px solid #262626; border-radius:16px;
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)); box-shadow:0 10px 22px rgba(0,0,0,.4); overflow:hidden; transition:.28s transform, .28s box-shadow, .28s border-color}
+    .card::before{content:""; position:absolute; inset:0; pointer-events:none; border-radius:14px; background: conic-gradient(from 180deg at 50% 50%, transparent 0 18%, rgba(255,122,0,.14) 24%, transparent 32%, transparent 60%, rgba(54,255,155,.12) 68%, transparent 76%); filter:blur(10px); opacity:0; transition:.28s opacity}
+    .card::after{content:""; position:absolute; inset:0; pointer-events:none; border-radius:14px; background:
+        radial-gradient(8px 8px at 12px 12px, rgba(255,122,0,.6), transparent 60%),
+        radial-gradient(8px 8px at calc(100% - 12px) 12px, rgba(54,255,155,.6), transparent 60%),
+        radial-gradient(8px 8px at 12px calc(100% - 12px), rgba(255,36,74,.6), transparent 60%),
+        radial-gradient(8px 8px at calc(100% - 12px) calc(100% - 12px), rgba(255,255,255,.35), transparent 60%);
+      mix-blend-mode:screen; opacity:.18; transition:.28s opacity}
+    .card:hover{transform:translateY(6px); border-color:#3a3a3a; box-shadow:0 16px 36px rgba(0,0,0,.55), 0 0 26px rgba(255,122,0,.18)}
+    .card:hover::before{opacity:.9} .card:hover::after{opacity:.35}
+    .icon{width:clamp(86px,28%,150px); height:auto; margin-bottom:.5rem; image-rendering:pixelated}
+    .label{font-family:"Syne Mono",monospace; font-size:clamp(1.05rem,2.3vw,1.25rem); color:var(--acc); letter-spacing:.08em}
+
+    /* footer */
+    footer{margin-top:auto; border-top:1px solid #262626; background:#0a0a0a; color:#7c7c7c; text-align:center; padding:1.2rem 1rem 2rem; font-size:.86rem}
+
+    /* reduz motion */
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none !important; transition:none !important}
+    }
+	/* Header soft red glow (links + wordmark) — index */
+	:root{
+	  --glow-red-soft: rgba(255,51,77,.28);
+	  --glow-red-ambient: rgba(255,51,77,.16);
+	}
+
+	header a,
+	header .brand img.brand-logo,
+	header .brand .sigil-dot{
+	  transition: text-shadow .22s ease, filter .22s ease, box-shadow .22s ease, border-color .22s ease;
+	}
+
+	header nav a:hover,
+	header nav a:focus-visible{
+	  text-shadow:
+		0 0 6px var(--glow-red-soft),
+		0 0 14px var(--glow-red-ambient);
+	}
+	header nav a:active{
+	  text-shadow:
+		0 0 10px rgba(255,51,77,.35),
+		0 0 22px rgba(255,51,77,.22);
+	}
+
+	header .brand:hover img.brand-logo,
+	header .brand:focus-visible img.brand-logo{
+	  filter:
+		drop-shadow(0 0 8px var(--glow-red-soft))
+		drop-shadow(0 0 18px var(--glow-red-ambient));
+	}
+	header .brand:active img.brand-logo{
+	  filter:
+		drop-shadow(0 0 12px rgba(255,51,77,.35))
+		drop-shadow(0 0 26px rgba(255,51,77,.22));
+	}
+
+	header .brand:hover .sigil-dot,
+	header .brand:focus-visible .sigil-dot{
+	  box-shadow:
+		0 0 10px var(--glow-red-soft),
+		0 0 18px var(--glow-red-ambient);
+	  border-color: rgba(255,51,77,.45);
+	}
+	header .brand:active .sigil-dot{
+	  box-shadow:
+		0 0 14px rgba(255,51,77,.35),
+		0 0 24px rgba(255,51,77,.22);
+	}
+
+  
+	/* glow vars */
+	:root{ --glow-red:#ff334d; --glow-red-soft:rgba(255,51,77,.28); --glow-red-ambient:rgba(255,51,77,.16) }
+
+	/* header logo size */
+	/* index.html (inline <style>) */
+	.brand img.brand-logo{ display:block; height:clamp(97.152px,18.216vw,242.88px); width:auto; }
+
+
+	/* global link/button glow */
+	a:hover{ text-shadow: 0 0 8px var(--glow-red-soft), 0 0 18px var(--glow-red-ambient) }
+	:where(.btn, button){ position:relative; transition: box-shadow .25s ease }
+	:where(.btn, button):hover{ box-shadow: 0 0 20px var(--glow-red-soft) }
+	
+		/* === COPY of style.css glow for header nav links (verbatim) === */
+	:root{
+	  --glow-red:#ff334d;
+	  --glow-red-soft:rgba(255,51,77,.28);
+	  --glow-red-ambient:rgba(255,51,77,.16);
+	}
+
+	/* host element */
+	:where(.card, .figure, header nav a){
+	  position:relative;
+	  transition: box-shadow .28s ease, border-color .28s ease, transform .28s ease;
+	}
+
+	/* bloom layers */
+	:where(.card, .figure, header nav a)::before,
+	:where(.card, .figure, header nav a)::after{
+	  content:"";
+	  position:absolute;
+	  inset:-2px;
+	  pointer-events:none;
+	  opacity:0;
+	  transition: opacity .28s ease, filter .28s ease;
+	  border-radius:inherit;
+	}
+	:where(.card, .figure, header nav a)::before{
+	  background:
+		radial-gradient(200px 160px at 50% 20%, var(--glow-red-ambient), transparent 62%),
+		radial-gradient(240px 200px at 50% 80%, var(--glow-red-soft), transparent 70%);
+	  filter: blur(12px);
+	}
+	:where(.card, .figure, header nav a)::after{
+	  box-shadow: 0 0 22px 12px var(--glow-red-ambient) inset;
+	  filter: blur(6px);
+	}
+
+	/* hover state */
+	:where(.card, .figure, header nav a):hover{
+	  border-color: rgba(255,51,77,.45);
+	  box-shadow:
+		0 2px 14px rgba(0,0,0,.45),
+		0 0 28px var(--glow-red-soft);
+	}
+	:where(.card, .figure, header nav a):hover::before,
+	:where(.card, .figure, header nav a):hover::after{
+	  opacity:1;
+	  filter: blur(14px);
+	}
+	/* === end copy === */
+
+	
+</style>
 </head>
-<body class="scanlines">
+<body>
+  <header>
+    <div class="header-inner">
+      <a class="brand" href="#" aria-label="MEWVOID home">
+        <span class="sigil-dot" aria-hidden="true"></span>
+        <img class="brand-logo" src="assets/pics/mewvoid%20liquidy2k2.png" alt="MEWVOID wordmark" />
+      </a>
+      <nav aria-label="primary">
+        <a href="pages/sound.html">sound</a>
+        <a href="pages/shop.html">shop</a>
+        <a href="pages/links.html">links</a>
+      </nav>
+    </div>
+  </header>
 
-  <div class="loading">LOADING SYSTEM...</div>
+  <main>
+    <section class="hero" aria-label="cyber hero">
+      <div class="veil" aria-hidden="true"></div>
 
-  <div id="site-content" style="display: none;">
-    <div class="grid-bg"></div>
+      <!-- chrome‑ish logo: swap the <text> with your path logo -->
+      <svg id="chrome" viewBox="0 0 900 220" role="img" aria-label="MewVoid chrome wordmark">
+        <defs>
+          <filter id="chromeFilter">
+            <feTurbulence type="fractalNoise" baseFrequency="0.008" numOctaves="2" result="noise"/>
+            <feGaussianBlur stdDeviation="1.5" in="noise" result="bump"/>
+            <feSpecularLighting in="bump" surfaceScale="7" specularConstant=".9" specularExponent="25" lighting-color="white" result="spec">
+              <feDistantLight azimuth="235" elevation="55"/>
+            </feSpecularLighting>
+            <feComposite in="spec" in2="SourceAlpha" operator="in" result="lit"/>
+            <feMerge>
+              <feMergeNode in="lit"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+          <linearGradient id="steel" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#eef3fb"/>
+            <stop offset=".45" stop-color="#8fa3b8"/>
+            <stop offset=".55" stop-color="#eef3fb"/>
+            <stop offset="1" stop-color="#5e6b78"/>
+          </linearGradient>
+        </defs>
+        <text x="50%" y="58%" text-anchor="middle" font-size="140" font-weight="900" letter-spacing="12" fill="url(#steel)" filter="url(#chromeFilter)">BITTEN</text>
+      </svg>
 
-    <header>
-      <h1>MEWVOID</h1>
-    </header>
+      <div class="neon">change // ur mind</div>
+      <div class="caption">© 2025 MEWVOID</div>
+    </section>
 
-    <main>
-      <div class="card-grid">
-        <!--  
-        <a href="pages/art.html" class="card-link">
-          <section class="card">
-            <img src="assets/words/art.png" alt="Art" class="card-label" />
-          </section>
-        </a> 
-        -->
+    <p style="max-width:980px;margin:1rem auto 0;padding:0 1rem;text-align:center;color:var(--fg-dim);font-size:.98rem;line-height:1.6">
+      Portland, OR
+    </p>
+<!--
+    <section class="grid" aria-label="primary navigation">
+      <a class="card" href="pages/sound.html" aria-label="sound">
+        <img class="icon" src="assets/gifs/soundwave.gif" alt="" />
+        <div class="label">SOUND</div>
+      </a>
+      <a class="card" href="pages/shop.html" aria-label="shop">
+        <img class="icon" src="assets/gifs/zeldarupee.gif" alt="" />
+        <div class="label">SHOP</div>
+      </a>
+      <a class="card" href="pages/links.html" aria-label="links">
+        <img class="icon" src="assets/gifs/links.gif" alt="" />
+        <div class="label">LINKS</div>
+      </a>
+    </section> -->
+  </main>
 
-        <a href="pages/sound.html" class="card-link">
-          <section class="card">
-            <img src="assets/gifs/soundwave.gif" alt="Soundwave" class="card-icon" />
-            <img src="assets/words/sound.png" alt="Sound" class="card-label" />
-          </section>
-        </a>
-
-        <!-- 
-        <a href="pages/tools.html" class="card-link">
-          <section class="card">
-            <img src="assets/words/tools.png" alt="Tools" class="card-label" />
-          </section>
-        </a>   
-        -->
-
-        <a href="pages/shop.html" class="card-link">
-          <section class="card">
-            <img src="assets/gifs/zeldarupee.gif" alt="Zelda Rupee" class="card-icon" />
-            <img src="assets/words/shop.png" alt="Shop" class="card-label" />
-          </section>
-        </a>
-
-
-        <a href="pages/links.html" class="card-link">
-          <section class="card">
-            <img src="assets/gifs/links.gif" alt="Links" class="card-icon" />
-         
-          </section>
-        </a>
-      </div>
-    </main>
-
-    <footer>
-      <p>© 2025 MEWVOID. All rights reversed.</p>
-    </footer>
-  </div>
-
-  <script>
-    setTimeout(() => {
-      document.querySelector('.loading').style.display = 'none';
-      document.getElementById('site-content').style.display = 'flex';
-    }, 2000);
-  </script>
+  <footer>
+    <p>All rights reversed.</p>
+  </footer>
 </body>
 </html>

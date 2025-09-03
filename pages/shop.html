@@ -1,71 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <body class="scanlines">
-    <div class="grid-bg"></div>
-    <header>
-        <a href="../index.html" class="logo-link">
-            <h1>MEWVOID</h1>
-        </a>
-    </header>
-    <link href="https://fonts.googleapis.com/css2?family=Doto&family=Orbitron&family=Syne+Mono&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css">
-    <style>
-        /* simple layout fixes so the item centers and links are styled */
-        #merch {
-            display: flex;
-            justify-content: center;
-            padding: 2rem;
-        }
-        .product-card {
-            text-align: center;
-            text-decoration: none;
-            font-family: "Syne Mono", monospace;
-        }
-        .product-card img {
-            max-width: 320px;
-            border: 2px solid #ffffff;
-            border-radius: 8px;
-        }
-        .product-title {
-            margin: 1rem 0 0.25rem;
-            font-size: 1.5rem;
-            color: #ffffff;
-        }
-        .product-price {
-            margin: 0 0 0.75rem;
-            font-size: 1rem;
-            color: #ffd000;
-        }
-        .buy-btn {
-            padding: 0.5rem 1.5rem;
-            background: #ffd000;
-            border: none;
-            font-family: inherit;
-            cursor: pointer;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop — m e w V o i d</title>
+  <meta name="description" content="MewVoid shop — shirts, pins, more.">
+  <link rel="stylesheet" href="../style.css" />
 </head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a class="brand" href="../index.html" aria-label="MEWVOID home">
+        <span class="sigil-dot" aria-hidden="true"></span>
+        <img class="brand-logo" src="../assets/pics/mewvoid%20liquidy2k2.png" alt="MEWVOID logo" />
+      </a>
+      <nav aria-label="primary">
+        <a href="../pages/sound.html">sound</a>
+        <a href="../pages/shop.html">shop</a>
+        <a href="../pages/links.html">links</a>
+      </nav>
+    </div>
+  </header>
 
+  <main class="wrapper">
+    <section class="products" aria-label="Products">
+      <article class="product">
+        <img src="../assets/pics/mewvoidshirt.gif" alt="MewVoid T-Shirt preview" />
+        <h2>T-S h i r t</h2>
+        <a class="btn" href="https://mewvoid.printful.me/product/mewvoid-tshirt" target="_blank" rel="noopener">buy</a>
+      </article>
 
-    <main>
-        <section id="merch">
-            <a class="product-card" href="https://mewvoid.printful.me/product/mewvoid-tshirt" target="_blank" rel="noopener noreferrer">
-                <img src="../assets/pics/mewvoidshirt.gif" alt="MewVoid T Shirt">
-                <h2 class="product-title">MewVoid T Shirt</h2>
-                <p class="product-price"></p>
-                <button class="buy-btn">buy</button>
-            </a>
+      <article class="product">
+        <img src="../assets/pics/mewvoidpins.gif" alt="MewVoid enamel pins preview" />
+        <h2>P i n s</h2>
+        <a class="btn" href="https://mewvoid.printful.me/product/pins" target="_blank" rel="noopener">buy</a>
+      </article>
+    </section>
+  </main>
 
-            <a class="product-card" href="https://mewvoid.printful.me/product/pins" target="_blank" rel="noopener noreferrer">
-                <img src="../assets/pics/mewvoidpins.gif" alt="MewVoid T Shirt">
-                <h2 class="product-title">MewVoid Pins</h2>
-                <p class="product-price"></p>
-                <button class="buy-btn">buy</button>
-            </a>
-        </section>
-    </main>
+  <footer>
+    <p>© 2025 m e w V o i d.</p>
+  </footer>
 </body>
 </html>
