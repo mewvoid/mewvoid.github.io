@@ -285,3 +285,22 @@ header .brand:active .sigil{
   .figure img{ width: clamp(80px, 12vw, 130px); }
 }
 
+/* --- MOBILE FIX: center + responsive cover, no desktop change --- */
+@media (max-width: 800px){
+  .hero a[href*="mewvoid.bandcamp.com/album/bitten"]{
+    position: static !important;   /* leave normal flow */
+    transform: none !important;
+    left: auto !important; top: auto !important;
+    display: block !important;
+    margin: 16px auto 0 !important; /* center */
+    width: min(92vw, 520px) !important; /* scale with viewport */
+    max-width: 92vw !important;
+    z-index: 3 !important;
+  }
+  .hero a[href*="mewvoid.bandcamp.com/album/bitten"] img{
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;       /* keep proportions */
+    object-fit: contain !important;
+  }
+}
