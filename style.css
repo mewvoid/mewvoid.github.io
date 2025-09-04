@@ -166,7 +166,7 @@ iframe,audio,video,img{border-radius:12px}
 /* ===== Header brand image — 2025-09-02 ===== */
 .brand img.brand-logo{
   display:block;
-  height:clamp(97.152px,18.216vw,242.88px);
+  height:clamp(104.92416px,19.67328vw,262.3104px);
   width:auto;
   image-rendering:auto;
   filter: drop-shadow(0 1px 10px rgba(255,122,0,.18));
