@@ -202,6 +202,28 @@
 	}
 
 
+
+		/* --- MOBILE ONLY: let hero grow and scale the cover --- */
+	@media (max-width: 900px){
+	  .hero{
+		aspect-ratio: auto !important;
+		height: auto !important;
+		overflow: visible !important;
+	  }
+	  .bitten-cover{
+		position: static !important;
+		display: block !important;
+		margin: 16px auto 0 !important;
+		width: min(92vw, 560px) !important;
+	  }
+	  .bitten-cover img{
+		display:block !important;
+		width:100% !important;
+		height:auto !important;
+	  }
+	}
+
+
 	
 </style>
 </head>
