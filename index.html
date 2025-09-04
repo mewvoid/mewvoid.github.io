@@ -193,6 +193,14 @@
 	}
 	/* === end copy === */
 	
+	/* Center the BITTEN cover image (no other changes) */
+	.hero a[href*="mewvoid.bandcamp.com/album/bitten"] img,
+	.hero img[src*="BITTEN%20album%20COVER%20small.PNG"]{
+	  display:block;
+	  margin:0 auto;   /* centers horizontally */
+	  height:auto;     /* keeps aspect ratio */
+	}
+
 
 	
 </style>
@@ -215,6 +223,16 @@
   <main>
     <section class="hero" aria-label="cyber hero">
       <div class="veil" aria-hidden="true"></div>
+	  
+	    <a class="figure bitten-cover"
+		   href="https://mewvoid.bandcamp.com/album/bitten"
+		   target="_blank" rel="noopener noreferrer"
+		   aria-label="BITTEN — listen on Bandcamp">
+		  <img src="assets/pics/BITTEN%20album%20COVER%20small.PNG"
+			   alt="BITTEN album cover" loading="lazy" />
+		</a>
+		
+
 
       <!-- chrome‑ish logo: swap the <text> with your path logo -->
       <svg id="chrome" viewBox="0 0 900 220" role="img" aria-label="MewVoid chrome wordmark">
