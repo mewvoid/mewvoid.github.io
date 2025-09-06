@@ -209,22 +209,42 @@
 		aspect-ratio: auto !important;
 		height: auto !important;
 		overflow: visible !important;
-	  }
-	  .bitten-cover{
-		position: static !important;
-		display: block !important;
-		margin: 16px auto 0 !important;
-		width: min(92vw, 560px) !important;
+	
 	  }
 	  .bitten-cover img{
 		display:block !important;
 		width:100% !important;
 		height:auto !important;
 	  }
+	
+    /* remove the blur overlay entirely */
+	.veil{ display:none !important; backdrop-filter:none !important; filter:none !important; }
+	
+		/* Bandcamp cover: always center + scale with viewport */
+	.bitten-cover{
+	  display:block;
+	  margin:16px auto 0;
+	  width: clamp(240px, 58vw, 560px);
+	}
+	.bitten-cover img{
+	  display:block;
+	  width:100%;
+	  height:auto;   /* keep proportions */
+	}
+	/* Make the LINK shrink-wrap the image (so hover/click area matches) */
+	.bitten-cover{
+	  display:block;
+	  width:fit-content;        /* shrink to image width */
+	  margin:16px auto 0;       /* center the link box */
+	  padding:0; border:0;
+	}
+	.bitten-cover img{
+	  display:block;
+	  width:clamp(240px, 58vw, 560px);  /* image resizes; link follows */
+	  height:auto;
 	}
 
 
-	
 </style>
 </head>
 <body>
@@ -287,9 +307,9 @@
     </section>
 
     <p style="max-width:980px;margin:1rem auto 0;padding:0 1rem;text-align:center;color:var(--fg-dim);font-size:.98rem;line-height:1.6">
-      OR
+      <!--OR
+	  
     </p>
-<!--
     <section class="grid" aria-label="primary navigation">
       <a class="card" href="pages/sound.html" aria-label="sound">
         <img class="icon" src="assets/gifs/soundwave.gif" alt="" />
