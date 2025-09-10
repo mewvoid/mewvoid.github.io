@@ -287,7 +287,7 @@ header .brand:active .sigil{
 
 /* --- MOBILE FIX: center + responsive cover, no desktop change --- */
 @media (max-width: 800px){
-  .hero a[href*="https://bible.usccb.org/bible/psalms/40"]{
+  .hero a[href*="https://www.bible.com/bible/114/PSA.40.NKJV"]{
     position: static !important;   /* leave normal flow */
     transform: none !important;
     left: auto !important; top: auto !important;
@@ -297,7 +297,7 @@ header .brand:active .sigil{
     max-width: 92vw !important;
     z-index: 3 !important;
   }
-  .hero a[href*="https://bible.usccb.org/bible/psalms/40"] img{
+  .hero a[href*="https://www.bible.com/bible/114/PSA.40.NKJV"] img{
     display: block !important;
     width: 100% !important;
     height: auto !important;       /* keep proportions */
