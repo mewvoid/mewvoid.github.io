@@ -287,7 +287,7 @@ header .brand:active .sigil{
 
 /* --- MOBILE FIX: center + responsive cover, no desktop change --- */
 @media (max-width: 800px){
-  .hero a[href*="mewvoid.bandcamp.com/album/bitten"]{
+  .hero a[href*="https://bible.usccb.org/bible/psalms/40"]{
     position: static !important;   /* leave normal flow */
     transform: none !important;
     left: auto !important; top: auto !important;
@@ -297,7 +297,7 @@ header .brand:active .sigil{
     max-width: 92vw !important;
     z-index: 3 !important;
   }
-  .hero a[href*="mewvoid.bandcamp.com/album/bitten"] img{
+  .hero a[href*="https://bible.usccb.org/bible/psalms/40"] img{
     display: block !important;
     width: 100% !important;
     height: auto !important;       /* keep proportions */
